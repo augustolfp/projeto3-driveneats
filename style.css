@@ -1,1 +1,85 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #EEEEEE;
+}
 
+h1 {
+    font-family: 'Righteous', cursive;
+    font-size: 44px;
+}
+
+h2 {
+    font-size: 18px;
+}
+
+h3 {
+    font-size: 26px;
+    font-family: 'Righteous', cursive;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: #CF2F2B;
+}
+
+header div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 92px;
+    width: 414px;
+    color: white;
+    padding-left: 21px;
+}
+
+main {
+    margin-top: 130px;
+}
+.BottomBar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 92px;
+    background-color: white;
+}
+
+
+.FecharPedido {
+    background-color: #37B72E;
+    width: 364px;
+    height: 60px;
+    border-radius: 30px;
+    border: none;
+    color: white;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.PratoPrincipal {
+    display: flex;
+}
+.PratoPrincipal div {
+    display: flex;
+    flex-direction: column;
+    width: 172px;
+    height: 216px;
+    border-radius: 10px;
+    background-color: white;
+    display: flex;
+}
+
+.PratoPrincipal img {
+    width: 144px;
+    height: 87px;
+}
