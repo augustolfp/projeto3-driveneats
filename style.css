@@ -18,6 +18,7 @@ h3 {
     font-size: 26px;
     font-family: 'Righteous', cursive;
     margin-bottom: 17px;
+    margin-left: 16px;
 }
 
 h4 {
@@ -59,7 +60,8 @@ header div {
 }
 
 main {
-    margin-top: 130px;
+    margin: 130px 0;
+    width: 414px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -89,10 +91,10 @@ main {
 }
 
 article {
+    box-sizing: border-box  ;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 172px;
     height: 216px;
     background-color: white;
     border-radius: 10px;
@@ -102,9 +104,18 @@ article {
 article div {
     width: 144px;
     height: 186px;
+    margin-left: 14px;
+    margin-right: 14px;
 }
 
 section {
     overflow-x: scroll;
     display: flex;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+    margin-bottom: 36px;
 }
+
+section::-webkit-scrollbar {
+    display: none;
+  }
