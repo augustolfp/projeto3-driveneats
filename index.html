@@ -20,84 +20,93 @@
   </header>
   <main>
     <h3>Primeiro, seu prato</h3>
-    <section>
-      <article>
+    <section class="PratoPrincipal">
+      <article onclick="SelecionarProduto(this)">
         <div>
           <img src="Images/frango_yin_yang 1.png">
           <h4>Frango Yin Yang</h4>
           <h5>Um pouco de  batata, um pouco de salada</h5>
           <h6>R$14,90</h6>
         </div>
+        <ion-icon name="checkmark-circle"></ion-icon>
       </article>
-      <article>
+      <article onclick="SelecionarProduto(this)">
         <div>
           <img src="Images/frango_yin_yang 1.png">
-          <h4>Frango Yin Yang</h4>
-          <h5>Um pouco de  batata, um pouco de salada</h5>
-          <h6>R$14,90</h6>
+          <h4>Macarrão médio</h4>
+          <h5>Massa fresquinha</h5>
+          <h6>R$28,50</h6>
         </div>
+        <ion-icon name="checkmark-circle"></ion-icon>
       </article>
-      <article>
+      <article onclick="SelecionarProduto(this)">
         <div>
           <img src="Images/frango_yin_yang 1.png">
-          <h4>Frango Yin Yang</h4>
-          <h5>Um pouco de  batata, um pouco de salada</h5>
-          <h6>R$14,90</h6>
+          <h4>Yakissoba tradicional</h4>
+          <h5>Receita familiar!</h5>
+          <h6>R$19,90</h6>
         </div>
+        <ion-icon name="checkmark-circle"></ion-icon>
       </article>
     </section>
     <h3>Agora, sua bebida</h3>
-    <section>
-      <article>
+    <section class="Bebidas">
+      <article onclick="SelecionarProduto(this)">
         <div>
           <img src="Images/coquinha_gelada 1.png">
           <h4>Coquinha gelada</h4>
           <h5>Lata 350ml</h5>
           <h6>R$4,90</h6>
         </div>
+        <ion-icon name="checkmark-circle"></ion-icon>
       </article>
-      <article>
+      <article onclick="SelecionarProduto(this)">
         <div>
           <img src="Images/coquinha_gelada 1.png">
-          <h4>Coquinha gelada</h4>
+          <h4>Cervejinha</h4>
           <h5>Lata 350ml</h5>
-          <h6>R$4,90</h6>
+          <h6>R$5,50</h6>
         </div>
+        <ion-icon name="checkmark-circle"></ion-icon>
       </article>
-      <article>
+      <article onclick="SelecionarProduto(this)">
         <div>
           <img src="Images/coquinha_gelada 1.png">
-          <h4>Coquinha gelada</h4>
-          <h5>Lata 350ml</h5>
-          <h6>R$4,90</h6>
+          <h4>Água com gás</h4>
+          <h5>Garrafa 500ml</h5>
+          <h6>R$2,90</h6>
         </div>
+        <ion-icon name="checkmark-circle"></ion-icon>
       </article>
     </section>
     <h3>Por fim, sua sobremesa</h3>
-    <section>
-      <article>
+    <section class="Sobremesa">
+      <article onclick="SelecionarProduto(this)">
         <div>
           <img src="Images/pudim 1.png">
           <h4>Pudim</h4>
           <h5>Apenas pudim</h5>
           <h6>R$7,90</h6>
         </div>
+        <ion-icon name="checkmark-circle"></ion-icon>
       </article>
-      <article>
+      <article onclick="SelecionarProduto(this)">
         <div>
           <img src="Images/pudim 1.png">
-          <h4>Pudim</h4>
-          <h5>Apenas pudim</h5>
-          <h6>R$7,90</h6>
+          <h4>Gelatina</h4>
+          <h5>Feita com muito carinho</h5>
+          <h6>R$5,80</h6>
         </div>
+        <ion-icon name="checkmark-circle"></ion-icon>
       </article>
-      <article>
+      <article onclick="SelecionarProduto(this)">
         <div>
           <img src="Images/pudim 1.png">
-          <h4>Pudim</h4>
-          <h5>Apenas pudim</h5>
-          <h6>R$7,90</h6>
+          <h4>Salada de frutas</h4>
+          <h5>Para os Fitness de plantão</h5>
+          <h6>R$9,90</h6>
         </div>
+        <ion-icon name="checkmark-circle"></ion-icon>
       </article>
     </section>
   </main>
@@ -105,5 +114,7 @@
     <button class="FecharPedido">Fechar pedido</button>
   </nav>
   <script src="script.js"></script>  
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
 </html>

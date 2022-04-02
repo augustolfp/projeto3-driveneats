@@ -47,6 +47,8 @@ header {
     display: flex;
     justify-content: center;
     background-color: #CF2F2B;
+    box-shadow: 0 0 10px 0 black;
+    z-index: 1;
 }
 
 header div {
@@ -78,9 +80,7 @@ main {
     background-color: white;
 }
 
-
-.FecharPedido {
-    background-color: #37B72E;
+.BottomBar button {
     width: 364px;
     height: 60px;
     border-radius: 30px;
@@ -89,9 +89,20 @@ main {
     font-size: 20px;
     font-weight: 700;
 }
+.FecharPedido {
+    background-color: #37B72E;
+}
 
+ion-icon {
+    position: absolute;
+    right: 8px;
+    bottom: 6px;
+    color: #37B72E;
+    font-size: 25px;
+}
 article {
-    box-sizing: border-box  ;
+    position: relative;
+    box-sizing: border-box;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -99,13 +110,20 @@ article {
     background-color: white;
     border-radius: 10px;
     margin-left: 16px;
+    width: 172px;
 }
+
+
 
 article div {
     width: 144px;
     height: 186px;
     margin-left: 14px;
     margin-right: 14px;
+}
+
+article ion-icon {
+    opacity: 0;
 }
 
 section {
@@ -119,3 +137,13 @@ section {
 section::-webkit-scrollbar {
     display: none;
   }
+
+.ItemSelecionado {
+    border-style: solid;
+    border-width: 5px;
+    border-color: #37B72E;
+}
+
+.ItemSelecionado ion-icon {
+    opacity: 1;
+}
