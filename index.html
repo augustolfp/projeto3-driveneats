@@ -11,7 +11,7 @@
     <title>DrivenEats</title>
 </head>
 <body>
-
+  <div class="BlurBackground Escondido"></div>
   <header>
     <div>
       <h1>DrivenEats</h1>
@@ -20,7 +20,7 @@
   </header>
   <main>
     <h3>Primeiro, seu prato</h3>
-    <section class="PratoPrincipal">
+    <section>
       <article onclick="SelecionarProduto(this)">
         <div>
           <img src="Images/frango_yin_yang 1.png">
@@ -111,7 +111,8 @@
     </section>
   </main>
   <nav class="BottomBar">
-    <button class="FecharPedido">Fechar pedido</button>
+    <button class="SelecioneOs3Itens">Selecione os 3 itens <br> para fechar o pedido</button>
+    <button class="FecharPedido Escondido" onclick="Checkout()">Fechar pedido</button>
   </nav>
   <script src="script.js"></script>  
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
