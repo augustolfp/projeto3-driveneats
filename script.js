@@ -8,6 +8,11 @@ function SelecionarProduto(ElementoClicado) {
     EstadoSelecao();
 }
 
+function ProdutosSelecionados() {
+    let SelectedArticles = Array.from(document.querySelectorAll(".ItemSelecionado"));
+    return SelectedArticles;
+}
+
 function NumeroDeProdutosSelecionados() {
     let num = document.querySelectorAll(".ItemSelecionado").length;
     return num;
@@ -22,10 +27,37 @@ function EstadoSelecao() {
     }
 }
 
-function Checkout() {
+function FecharPedido() {
     let TransparentBackground = document.querySelector(".BlurBackground");
     let OrderStats = document.querySelector(".DetalhesPedidoContainer");
-    TransparentBackground.classList.remove("Escondido");
-    OrderStats.classList.remove("Escondido");
+    TransparentBackground.classList.toggle("Escondido");
+    OrderStats.classList.toggle("Escondido");
+}
 
+function RetornaNomeDeUmProduto(i) {
+    let Produtos = ProdutosSelecionados();
+    let nome = Produtos[i].querySelector(".ItemName");
+    return nome.innerText;
+}
+
+function RetornaPrecoDeUmProduto(i) {
+    let Produtos = ProdutosSelecionados();
+    let preco = Produtos[i].querySelector(".Price");
+    return preco.innerText;
+}
+
+function RetornaArrayProdutosSelecionados() {
+    let ArrayProdutosSelecionados = [];
+    for(let i=0; i < NumeroDeProdutosSelecionados(); i++) {
+        ArrayProdutosSelecionados.push(RetornaNomeDeUmProduto(i));
+    }
+    return ArrayProdutosSelecionados;
+}
+
+function RetornaArrayPrecosSelecionados() {
+    let ArrayPrecosSelecionados = [];
+    for(let i=0; i < NumeroDeProdutosSelecionados(); i++) {
+        ArrayPrecosSelecionados.push(RetornaPrecoDeUmProduto(i));
+    }
+    return ArrayPrecosSelecionados;
 }

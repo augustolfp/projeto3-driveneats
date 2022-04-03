@@ -35,8 +35,9 @@ h5 {
     margin-bottom: 10px;
 }
 
-h6 {
+.Price {
     font-size: 16px;
+    color: black;
 }
 
 header {
@@ -202,7 +203,7 @@ section::-webkit-scrollbar {
     margin-bottom: 20px;
 }
 
-.DetalhesPedido h4,h6 {
+.DetalhesPedido h4, .DetalhesPedido h6 {
     font-size: 22px;
     color: white;
     font-weight: 400;
@@ -215,7 +216,7 @@ section::-webkit-scrollbar {
     width: 328px;
 }
 
-.DetalhesPedido button {
+.Confirmar {
     width: 332px;
     height: 52px;
     border-style: none;
@@ -226,6 +227,14 @@ section::-webkit-scrollbar {
     font-weight: 700;
     margin-top: 25px;
     margin-bottom: 10px;
+}
+
+.Cancelar {
+    font-size: 22px;
+    font-weight: 700;
+    color: white;
+    background-color: transparent;
+    border-style: none;
 }
 
 .Escondido {

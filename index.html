@@ -31,8 +31,8 @@
         <p>TOTAL</p>
         <p>R$ 27,70</p>
       </div>
-      <button>Tudo certo, pode pedir!</button>
-      <p>Cancelar</p>
+      <button class="Confirmar">Tudo certo, pode pedir!</button>
+      <button class="Cancelar" onclick="FecharPedido()">Cancelar</button>
     </div>
   </div>
   <header>
@@ -47,27 +47,27 @@
       <article onclick="SelecionarProduto(this)">
         <div>
           <img src="Images/frango_yin_yang 1.png">
-          <h4>Frango Yin Yang</h4>
+          <h4 class="ItemName">Frango Yin Yang</h4>
           <h5>Um pouco de  batata, um pouco de salada</h5>
-          <h6>R$14,90</h6>
+          <p class="Price">R$14,90</p>
         </div>
         <ion-icon name="checkmark-circle"></ion-icon>
       </article>
       <article onclick="SelecionarProduto(this)">
         <div>
           <img src="Images/frango_yin_yang 1.png">
-          <h4>Macarrão médio</h4>
+          <h4 class="ItemName">Macarrão médio</h4>
           <h5>Massa fresquinha</h5>
-          <h6>R$28,50</h6>
+          <p class="Price">R$28,50</p>
         </div>
         <ion-icon name="checkmark-circle"></ion-icon>
       </article>
       <article onclick="SelecionarProduto(this)">
         <div>
           <img src="Images/frango_yin_yang 1.png">
-          <h4>Yakissoba tradicional</h4>
+          <h4 class="ItemName">Yakissoba tradicional</h4>
           <h5>Receita familiar!</h5>
-          <h6>R$19,90</h6>
+          <p class="Price">R$19,90</p>
         </div>
         <ion-icon name="checkmark-circle"></ion-icon>
       </article>
@@ -77,27 +77,27 @@
       <article onclick="SelecionarProduto(this)">
         <div>
           <img src="Images/coquinha_gelada 1.png">
-          <h4>Coquinha gelada</h4>
+          <h4 class="ItemName">Coquinha gelada</h4>
           <h5>Lata 350ml</h5>
-          <h6>R$4,90</h6>
+          <p class="Price">R$4,90</p>
         </div>
         <ion-icon name="checkmark-circle"></ion-icon>
       </article>
       <article onclick="SelecionarProduto(this)">
         <div>
           <img src="Images/coquinha_gelada 1.png">
-          <h4>Cervejinha</h4>
+          <h4 class="ItemName">Cervejinha</h4>
           <h5>Lata 350ml</h5>
-          <h6>R$5,50</h6>
+          <p class="Price">R$5,50</p>
         </div>
         <ion-icon name="checkmark-circle"></ion-icon>
       </article>
       <article onclick="SelecionarProduto(this)">
         <div>
           <img src="Images/coquinha_gelada 1.png">
-          <h4>Água com gás</h4>
+          <h4 class="ItemName">Água com gás</h4>
           <h5>Garrafa 500ml</h5>
-          <h6>R$2,90</h6>
+          <p class="Price">R$2,90</p>
         </div>
         <ion-icon name="checkmark-circle"></ion-icon>
       </article>
@@ -107,27 +107,27 @@
       <article onclick="SelecionarProduto(this)">
         <div>
           <img src="Images/pudim 1.png">
-          <h4>Pudim</h4>
+          <h4 class="ItemName">Pudim</h4>
           <h5>Apenas pudim</h5>
-          <h6>R$7,90</h6>
+          <p class="Price">R$7,90</p>
         </div>
         <ion-icon name="checkmark-circle"></ion-icon>
       </article>
       <article onclick="SelecionarProduto(this)">
         <div>
           <img src="Images/pudim 1.png">
-          <h4>Gelatina</h4>
+          <h4 class="ItemName">Gelatina</h4>
           <h5>Feita com muito carinho</h5>
-          <h6>R$5,80</h6>
+          <p class="Price">R$5,80</p>
         </div>
         <ion-icon name="checkmark-circle"></ion-icon>
       </article>
       <article onclick="SelecionarProduto(this)">
         <div>
           <img src="Images/pudim 1.png">
-          <h4>Salada de frutas</h4>
+          <h4 class="ItemName">Salada de frutas</h4>
           <h5>Para os Fitness de plantão</h5>
-          <h6>R$9,90</h6>
+          <p class="Price">R$9,90</p>
         </div>
         <ion-icon name="checkmark-circle"></ion-icon>
       </article>
@@ -135,7 +135,7 @@
   </main>
   <nav class="BottomBar">
     <button class="SelecioneOs3Itens">Selecione os 3 itens <br> para fechar o pedido</button>
-    <button class="FecharPedido Escondido" onclick="Checkout()">Fechar pedido</button>
+    <button class="FecharPedido Escondido" onclick="FecharPedido()">Fechar pedido</button>
   </nav>
   <script src="script.js"></script>  
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
