@@ -27,11 +27,40 @@ function EstadoSelecao() {
     }
 }
 
-function FecharPedido() {
+function InterruptorInterfaceCheckout() {
     let TransparentBackground = document.querySelector(".BlurBackground");
     let OrderStats = document.querySelector(".DetalhesPedidoContainer");
     TransparentBackground.classList.toggle("Escondido");
     OrderStats.classList.toggle("Escondido");
+}
+
+function StringReaistoFloat(price) {
+    let PriceString = price.substr(3);
+    PriceString = PriceString.replace(",", ".");
+    return Number(PriceString)
+}
+
+function CalculaValorTotal() {
+    let VetorPrecos = RetornaArrayPrecosSelecionados();
+    let ArrayPrecosNumber = [];
+    let total = 0;
+    for(let i=0; i < NumeroDeProdutosSelecionados(); i++) {
+        total = total + StringReaistoFloat(VetorPrecos[i]);
+    }
+    return total;
+}
+
+function FecharPedido() {
+    InterruptorInterfaceCheckout();
+    let VetorPrecos = RetornaArrayPrecosSelecionados();
+    let VetorProdutos = RetornaArrayProdutosSelecionados();
+    let NomesProdutos = Array.from(document.getElementById("DetalhesPedido").querySelectorAll("h4"));
+    let PrecosProdutos = Array.from(document.getElementById("DetalhesPedido").querySelectorAll("h6"));
+    for(let i = 0; i < NumeroDeProdutosSelecionados(); i++) {
+        NomesProdutos[i].innerHTML = VetorProdutos[i];
+        PrecosProdutos[i].innerHTML = VetorPrecos[i];
+    }
+    document.getElementById("ValorTotal").innerHTML = String(CalculaValorTotal());
 }
 
 function RetornaNomeDeUmProduto(i) {

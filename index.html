@@ -13,26 +13,26 @@
 <body>
   <div class="BlurBackground Escondido"></div>
   <div class="DetalhesPedidoContainer Escondido">
-    <div class="DetalhesPedido">
+    <div id="DetalhesPedido">
       <h2>Confirme seu pedido</h2>
       <div>
-        <h4>Frango Yin Yang</h4>
-        <h6>14,90</h6>
+        <h4></h4>
+        <h6></h6>
       </div>
       <div>
-        <h4>Frango Yin Yang</h4>
-        <h6>14,90</h6>
+        <h4></h4>
+        <h6></h6>
       </div>
       <div>
-        <h4>Frango Yin Yang</h4>
-        <h6>14,90</h6>
+        <h4></h4>
+        <h6></h6>
       </div>
       <div>
         <p>TOTAL</p>
-        <p>R$ 27,70</p>
+        <p id="ValorTotal"></p>
       </div>
       <button class="Confirmar">Tudo certo, pode pedir!</button>
-      <button class="Cancelar" onclick="FecharPedido()">Cancelar</button>
+      <button class="Cancelar" onclick="InterruptorInterfaceCheckout()">Cancelar</button>
     </div>
   </div>
   <header>
@@ -49,7 +49,7 @@
           <img src="Images/frango_yin_yang 1.png">
           <h4 class="ItemName">Frango Yin Yang</h4>
           <h5>Um pouco de  batata, um pouco de salada</h5>
-          <p class="Price">R$14,90</p>
+          <p class="Price">R$ 14,90</p>
         </div>
         <ion-icon name="checkmark-circle"></ion-icon>
       </article>
@@ -58,7 +58,7 @@
           <img src="Images/frango_yin_yang 1.png">
           <h4 class="ItemName">Macarrão médio</h4>
           <h5>Massa fresquinha</h5>
-          <p class="Price">R$28,50</p>
+          <p class="Price">R$ 28,50</p>
         </div>
         <ion-icon name="checkmark-circle"></ion-icon>
       </article>
@@ -67,7 +67,7 @@
           <img src="Images/frango_yin_yang 1.png">
           <h4 class="ItemName">Yakissoba tradicional</h4>
           <h5>Receita familiar!</h5>
-          <p class="Price">R$19,90</p>
+          <p class="Price">R$ 19,90</p>
         </div>
         <ion-icon name="checkmark-circle"></ion-icon>
       </article>
@@ -79,7 +79,7 @@
           <img src="Images/coquinha_gelada 1.png">
           <h4 class="ItemName">Coquinha gelada</h4>
           <h5>Lata 350ml</h5>
-          <p class="Price">R$4,90</p>
+          <p class="Price">R$ 4,90</p>
         </div>
         <ion-icon name="checkmark-circle"></ion-icon>
       </article>
@@ -88,7 +88,7 @@
           <img src="Images/coquinha_gelada 1.png">
           <h4 class="ItemName">Cervejinha</h4>
           <h5>Lata 350ml</h5>
-          <p class="Price">R$5,50</p>
+          <p class="Price">R$ 5,50</p>
         </div>
         <ion-icon name="checkmark-circle"></ion-icon>
       </article>
@@ -97,7 +97,7 @@
           <img src="Images/coquinha_gelada 1.png">
           <h4 class="ItemName">Água com gás</h4>
           <h5>Garrafa 500ml</h5>
-          <p class="Price">R$2,90</p>
+          <p class="Price">R$ 2,90</p>
         </div>
         <ion-icon name="checkmark-circle"></ion-icon>
       </article>
@@ -109,7 +109,7 @@
           <img src="Images/pudim 1.png">
           <h4 class="ItemName">Pudim</h4>
           <h5>Apenas pudim</h5>
-          <p class="Price">R$7,90</p>
+          <p class="Price">R$ 7,90</p>
         </div>
         <ion-icon name="checkmark-circle"></ion-icon>
       </article>
@@ -118,7 +118,7 @@
           <img src="Images/pudim 1.png">
           <h4 class="ItemName">Gelatina</h4>
           <h5>Feita com muito carinho</h5>
-          <p class="Price">R$5,80</p>
+          <p class="Price">R$ 5,80</p>
         </div>
         <ion-icon name="checkmark-circle"></ion-icon>
       </article>
@@ -127,7 +127,7 @@
           <img src="Images/pudim 1.png">
           <h4 class="ItemName">Salada de frutas</h4>
           <h5>Para os Fitness de plantão</h5>
-          <p class="Price">R$9,90</p>
+          <p class="Price">R$ 9,90</p>
         </div>
         <ion-icon name="checkmark-circle"></ion-icon>
       </article>

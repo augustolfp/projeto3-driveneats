@@ -175,7 +175,7 @@ section::-webkit-scrollbar {
     top: 336px;
 }
 
-.DetalhesPedido {
+#DetalhesPedido {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -188,7 +188,7 @@ section::-webkit-scrollbar {
     padding-top: 21px;
 }
 
-.DetalhesPedido p {
+#DetalhesPedido p {
     font-size: 22px;
     font-weight: 700;
     color: white;
@@ -196,20 +196,20 @@ section::-webkit-scrollbar {
     margin-top: 10px;
 }
 
-.DetalhesPedido h2 {
+#DetalhesPedido h2 {
     font-size: 22px;
     font-weight: 700;
     color: white;
     margin-bottom: 20px;
 }
 
-.DetalhesPedido h4, .DetalhesPedido h6 {
+#DetalhesPedido h4, #DetalhesPedido h6 {
     font-size: 22px;
     color: white;
     font-weight: 400;
 }
 
-.DetalhesPedido div {
+#DetalhesPedido div {
     display: flex;
     justify-content: space-between;
     align-items: center;
