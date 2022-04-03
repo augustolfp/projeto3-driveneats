@@ -24,5 +24,8 @@ function EstadoSelecao() {
 
 function Checkout() {
     let TransparentBackground = document.querySelector(".BlurBackground");
+    let OrderStats = document.querySelector(".DetalhesPedidoContainer");
     TransparentBackground.classList.remove("Escondido");
+    OrderStats.classList.remove("Escondido");
+
 }

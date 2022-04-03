@@ -89,6 +89,7 @@ main {
     font-size: 20px;
     
 }
+
 .FecharPedido {
     background-color: #37B72E;
     font-weight: 700;
@@ -155,7 +156,6 @@ section::-webkit-scrollbar {
 }
 
 .BlurBackground {
-    display: flex;
     position: fixed;
     top: 0;
     left: 0;
@@ -164,6 +164,68 @@ section::-webkit-scrollbar {
     height: 100%;
     background-color: white;
     opacity: 0.9;
+}
+
+.DetalhesPedidoContainer {
+    position: fixed;
+    z-index: 3;
+    width: 100%;
+    left: 0;
+    top: 336px;
+}
+
+.DetalhesPedido {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 377px;
+    height: 353px;
+    background-color: #50D074;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+    padding-top: 21px;
+}
+
+.DetalhesPedido p {
+    font-size: 22px;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 5px;
+    margin-top: 10px;
+}
+
+.DetalhesPedido h2 {
+    font-size: 22px;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 20px;
+}
+
+.DetalhesPedido h4,h6 {
+    font-size: 22px;
+    color: white;
+    font-weight: 400;
+}
+
+.DetalhesPedido div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 328px;
+}
+
+.DetalhesPedido button {
+    width: 332px;
+    height: 52px;
+    border-style: none;
+    border-radius: 25px;
+    background-color: white;
+    color: #50D074;
+    font-size: 22px;
+    font-weight: 700;
+    margin-top: 25px;
+    margin-bottom: 10px;
 }
 
 .Escondido {
