@@ -36,6 +36,8 @@ h5 {
 }
 
 .Price {
+    position: absolute;
+    bottom: 0;
     font-size: 16px;
     color: black;
 }
@@ -126,6 +128,7 @@ article {
 
 
 article div {
+    position: relative;
     width: 144px;
     height: 186px;
     margin-left: 14px;
