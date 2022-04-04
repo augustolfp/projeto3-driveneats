@@ -108,5 +108,5 @@ function TextoMensagem() {
 }
 function EnviaMensagem() {
     let Mensagem = TextoMensagem();
-    window.open("https://wa.me/55988005349?text=" + Mensagem);
+    window.open("https://wa.me/5535988005349?text=" + Mensagem);
 }
