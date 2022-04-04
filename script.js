@@ -97,7 +97,7 @@ function RetornaArrayPrecosSelecionados() {
     }
     return ArrayPrecosSelecionados;
 }
-function TextoMensagem() {
+function TextoMensagem(nome, endereco) {
     let Produtos = RetornaArrayProdutosSelecionados();
     let ValorTotal = CalculaValorTotal();
     ValorTotal = ValorTotal.toFixed(2);
@@ -105,11 +105,20 @@ function TextoMensagem() {
     -Prato: ${Produtos[0]} 
     -Bebida: ${Produtos[1]} 
     -Sobremesa: ${Produtos[2]}
-    Total: R$ ${ValorTotal}`
+    Total: R$ ${ValorTotal}
+    Nome: ${nome}
+    Endereço: ${endereco}`
     Mensagem = encodeURIComponent(Mensagem);
     return Mensagem;
 }
-function EnviaMensagem() {
-    let Mensagem = TextoMensagem();
+function EnviaMensagem(nome, endereco) {
+    let Mensagem = TextoMensagem(nome, endereco);
     window.open("https://wa.me/5535988005349?text=" + Mensagem);
+}
+
+function FinalizarPedido() {
+    let nome = prompt("Qual é o seu nome?");
+    let endereco = prompt("Digite o seu endereço");
+    EnviaMensagem(nome, endereco);
+
 }
