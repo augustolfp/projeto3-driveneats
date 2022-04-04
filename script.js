@@ -99,10 +99,13 @@ function RetornaArrayPrecosSelecionados() {
 }
 function TextoMensagem() {
     let Produtos = RetornaArrayProdutosSelecionados();
+    let ValorTotal = CalculaValorTotal();
+    ValorTotal = ValorTotal.toFixed(2);
     let Mensagem = `Olá, gostaria de fazer o pedido:
-    Prato: ${Produtos[0]} 
-    Bebida: ${Produtos[1]} 
-    Sobremesa: ${Produtos[2]}`
+    -Prato: ${Produtos[0]} 
+    -Bebida: ${Produtos[1]} 
+    -Sobremesa: ${Produtos[2]}
+    Total: R$ ${ValorTotal}`
     Mensagem = encodeURIComponent(Mensagem);
     return Mensagem;
 }
