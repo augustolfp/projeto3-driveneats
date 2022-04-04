@@ -40,6 +40,12 @@ function StringReaistoFloat(price) {
     return Number(PriceString)
 }
 
+function FloattoStringReais(price) {
+    let Valor = price.toFixed(2).toString();
+    Valor = Valor.replace(".", ",");
+    return Valor;
+}
+
 function CalculaValorTotal() {
     let VetorPrecos = RetornaArrayPrecosSelecionados();
     let ArrayPrecosNumber = [];
@@ -60,7 +66,8 @@ function FecharPedido() {
         NomesProdutos[i].innerHTML = VetorProdutos[i];
         PrecosProdutos[i].innerHTML = VetorPrecos[i];
     }
-    document.getElementById("ValorTotal").innerHTML = String(CalculaValorTotal());
+    let StringValorTotal = FloattoStringReais(CalculaValorTotal());
+    document.getElementById("ValorTotal").innerHTML = "R$ " + StringValorTotal;
 }
 
 function RetornaNomeDeUmProduto(i) {
@@ -89,4 +96,17 @@ function RetornaArrayPrecosSelecionados() {
         ArrayPrecosSelecionados.push(RetornaPrecoDeUmProduto(i));
     }
     return ArrayPrecosSelecionados;
+}
+function TextoMensagem() {
+    let Produtos = RetornaArrayProdutosSelecionados();
+    let Mensagem = `Olá, gostaria de fazer o pedido:
+    Prato: ${Produtos[0]} 
+    Bebida: ${Produtos[1]} 
+    Sobremesa: ${Produtos[2]}`
+    Mensagem = encodeURIComponent(Mensagem);
+    return Mensagem;
+}
+function EnviaMensagem() {
+    let Mensagem = TextoMensagem();
+    window.open("https://wa.me/55988005349?text=" + Mensagem);
 }
