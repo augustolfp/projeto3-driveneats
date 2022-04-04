@@ -79,6 +79,7 @@ main {
     align-items: center;
     height: 92px;
     background-color: white;
+    box-shadow: 0 0 5px rgb(0 0 0 / 0.2);
 }
 
 .BottomBar button {
@@ -119,6 +120,7 @@ article {
     border-radius: 10px;
     margin-left: 16px;
     width: 172px;
+    box-shadow: 0 0 5px rgb(0 0 0 / 0.2);
 }
 
 
@@ -135,6 +137,7 @@ article ion-icon {
 }
 
 section {
+    padding: 5px;
     overflow-x: scroll;
     display: flex;
     -ms-overflow-style: none;  /* IE and Edge */
@@ -172,7 +175,7 @@ section::-webkit-scrollbar {
     z-index: 3;
     width: 100%;
     left: 0;
-    top: 336px;
+    top: 150px;
 }
 
 #DetalhesPedido {
