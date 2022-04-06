@@ -113,7 +113,7 @@ function TextoMensagem(nome, endereco) {
 }
 function EnviaMensagem(nome, endereco) {
     let Mensagem = TextoMensagem(nome, endereco);
-    window.open("https://wa.me/5535988005349?text=" + Mensagem);
+    window.open("https://wa.me/5535988005349?text=" + Mensagem,"_self");
 }
 
 function FinalizarPedido() {
