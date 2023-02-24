@@ -1,0 +1,23 @@
+{
+  "name": "projeto3-driveneats",
+  "version": "1.0.0",
+  "description": "Terceiro projeto do Bootcamp Driven",
+  "main": "beverage.js",
+  "scripts": {
+    "dev": "parcel index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/augustolfp/projeto3-driveneats.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/augustolfp/projeto3-driveneats/issues"
+  },
+  "homepage": "https://github.com/augustolfp/projeto3-driveneats#readme",
+  "devDependencies": {
+    "parcel": "^2.8.3"
+  }
+}
