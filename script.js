@@ -47,6 +47,10 @@ function InterruptorInterfaceCheckout() {
     OrderStats.classList.toggle("Escondido");
 }
 
+document
+    .querySelector(".Cancelar")
+    .addEventListener("click", InterruptorInterfaceCheckout);
+
 function StringReaistoFloat(price) {
     let PriceString = price.substr(3);
     PriceString = PriceString.replace(",", ".");
