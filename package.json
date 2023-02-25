@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Terceiro projeto do Bootcamp Driven",
   "source": "index.html",
+  "type": "module",
   "scripts": {
     "dev": "parcel index.html"
   },
