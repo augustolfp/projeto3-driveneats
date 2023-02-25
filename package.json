@@ -2,7 +2,7 @@
   "name": "projeto3-driveneats",
   "version": "1.0.0",
   "description": "Terceiro projeto do Bootcamp Driven",
-  "main": "beverage.js",
+  "source": "index.html",
   "scripts": {
     "dev": "parcel index.html"
   },
