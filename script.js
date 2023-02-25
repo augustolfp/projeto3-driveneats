@@ -140,3 +140,5 @@ function FinalizarPedido() {
     let endereco = prompt("Digite o seu endereço");
     EnviaMensagem(nome, endereco);
 }
+
+document.querySelector(".Confirmar").addEventListener("click", FinalizarPedido);
