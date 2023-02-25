@@ -87,6 +87,8 @@ function FecharPedido() {
     document.getElementById("ValorTotal").innerHTML = "R$ " + StringValorTotal;
 }
 
+document.querySelector(".FecharPedido").addEventListener("click", FecharPedido);
+
 function RetornaNomeDeUmProduto(i) {
     let Produtos = ProdutosSelecionados();
     let nome = Produtos[i].querySelector(".ItemName");
