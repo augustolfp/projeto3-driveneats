@@ -2,6 +2,85 @@ import { sayHello } from "./beverage.js";
 
 sayHello();
 
+const pratos = [
+    {
+        nome: "Frango Yin Yang",
+        imagem: "images/frango.png",
+        descricao: "Um pouco de batata, um pouco de salada",
+        preco: 14.9,
+    },
+    {
+        nome: "Macarrão médio",
+        imagem: "images/frango.png",
+        descricao: "Massa fresquinha",
+        preco: 28.5,
+    },
+    {
+        nome: "Yakissoba tradicional",
+        imagem: "images/frango.png",
+        descricao: "Receita familiar!",
+        preco: 19.9,
+    },
+];
+
+const bebidas = [
+    {
+        nome: "Coquinha gelada",
+        imagem: "images/coca.png",
+        descricao: "Lata 350ml",
+        preco: 4.9,
+    },
+    {
+        nome: "Cervejinha",
+        imagem: "images/coca.png",
+        descricao: "Lata 350ml",
+        preco: 5.5,
+    },
+    {
+        nome: "Água com gás",
+        imagem: "images/coca.png",
+        descricao: "Garrafa 500ml",
+        preco: 2.9,
+    },
+];
+
+const sobremesas = [
+    {
+        nome: "Pudim",
+        imagem: "images/pudim.png",
+        descricao: "Apenas pudim",
+        preco: 7.9,
+    },
+    {
+        nome: "Gelatina",
+        imagem: "images/pudim.png",
+        descricao: "Feita com muito carinho",
+        preco: 5.8,
+    },
+    {
+        nome: "Salada de frutas",
+        imagem: "images/pudim.png",
+        descricao: "Para os Fitness de plantão",
+        preco: 9.9,
+    },
+];
+
+const pratosContainer = document.querySelector(".Pratos");
+const bebidasContainer = document.querySelector(".Bebidas");
+const sobremesaContainer = document.querySelector(".Sobremesa");
+
+pratos.forEach((prato) => {
+    renderizarItem(prato, pratosContainer);
+});
+
+bebidas.forEach((bebida) => {
+    renderizarItem(bebida, bebidasContainer);
+});
+
+sobremesas.forEach((sobremesa) => {
+    renderizarItem(sobremesa, sobremesaContainer);
+});
+
 function SelecionarProduto(ElementoClicado) {
     let ElementoPai = ElementoClicado.parentNode;
     let ItemJaSelecionado = ElementoPai.querySelector(".ItemSelecionado");
@@ -146,3 +225,17 @@ function FinalizarPedido() {
 }
 
 document.querySelector(".Confirmar").addEventListener("click", FinalizarPedido);
+
+function renderizarItem(item, container) {
+    const article = document.createElement("article");
+    article.innerHTML = `
+                    <div>
+                        <img src="${item.imagem}" />
+                        <h4 class="ItemName">${item.nome}</h4>
+                        <h5>${item.descricao}</h5>
+                        <p class="Price">R$ ${item.preco.toFixed(2)}</p>
+                    </div>
+                    <ion-icon name="checkmark-circle"></ion-icon>
+    `;
+    container.appendChild(article);
+}
