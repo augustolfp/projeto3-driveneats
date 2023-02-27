@@ -93,13 +93,8 @@ function renderizarItem(item, container) {
                     <ion-icon name="checkmark-circle"></ion-icon>
     `;
     container.appendChild(article);
-}
-
-const productList = document.querySelectorAll("article");
-
-for (let i = 0; i < productList.length; i++) {
-    productList[i].addEventListener("click", function () {
-        SelecionarProduto(productList[i]);
+    article.addEventListener("click", function () {
+        SelecionarProduto(article);
     });
 }
 
