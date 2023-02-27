@@ -2,6 +2,10 @@ import { sayHello } from "./beverage.js";
 
 sayHello();
 
+let pratoSelecionado = null;
+let bebidaSelecionada = null;
+let sobremesaSelecionada = null;
+
 const pratos = [
     {
         nome: "Frango Yin Yang",
@@ -70,18 +74,18 @@ const bebidasContainer = document.querySelector(".Bebidas");
 const sobremesaContainer = document.querySelector(".Sobremesa");
 
 pratos.forEach((prato) => {
-    renderizarItem(prato, pratosContainer);
+    renderizarItem(prato, pratosContainer, "prato");
 });
 
 bebidas.forEach((bebida) => {
-    renderizarItem(bebida, bebidasContainer);
+    renderizarItem(bebida, bebidasContainer, "bebida");
 });
 
 sobremesas.forEach((sobremesa) => {
-    renderizarItem(sobremesa, sobremesaContainer);
+    renderizarItem(sobremesa, sobremesaContainer, "sobremesa");
 });
 
-function renderizarItem(item, container) {
+function renderizarItem(item, container, tipo) {
     const article = document.createElement("article");
     article.innerHTML = `
                     <div>
@@ -92,19 +96,26 @@ function renderizarItem(item, container) {
                     </div>
                     <ion-icon name="checkmark-circle"></ion-icon>
     `;
+
     container.appendChild(article);
+
     article.addEventListener("click", function () {
-        SelecionarProduto(article);
+        SelecionarProduto(article, tipo, item.nome, item.preco);
     });
 }
 
-function SelecionarProduto(ElementoClicado) {
+function SelecionarProduto(ElementoClicado, tipo, nome, preco) {
     let ElementoPai = ElementoClicado.parentNode;
     let ItemJaSelecionado = ElementoPai.querySelector(".ItemSelecionado");
     if (ItemJaSelecionado !== null) {
         ItemJaSelecionado.classList.remove("ItemSelecionado");
     }
     ElementoClicado.classList.add("ItemSelecionado");
+
+    if (tipo === "prato") pratoSelecionado = { nome, preco };
+    if (tipo === "bebida") bebidaSelecionada = { nome, preco };
+    if (tipo === "sobremesa") sobremesaSelecionada = { nome, preco };
+
     EstadoSelecao();
 }
 
@@ -124,20 +135,31 @@ function NumeroDeProdutosSelecionados() {
 
 function FecharPedido() {
     InterruptorInterfaceCheckout();
-    let VetorPrecos = RetornaArrayPrecosSelecionados();
-    let VetorProdutos = RetornaArrayProdutosSelecionados();
-    let NomesProdutos = Array.from(
-        document.getElementById("DetalhesPedido").querySelectorAll("h4")
-    );
-    let PrecosProdutos = Array.from(
-        document.getElementById("DetalhesPedido").querySelectorAll("h6")
-    );
-    for (let i = 0; i < NumeroDeProdutosSelecionados(); i++) {
-        NomesProdutos[i].innerHTML = VetorProdutos[i];
-        PrecosProdutos[i].innerHTML = VetorPrecos[i];
-    }
-    let StringValorTotal = FloattoStringReais(CalculaValorTotal());
-    document.getElementById("ValorTotal").innerHTML = "R$ " + StringValorTotal;
+
+    const prato = document.querySelector(".DetalhePrato");
+    prato.innerHTML = `
+        <h4>${pratoSelecionado.nome}</h4>
+        <h6>R$ ${pratoSelecionado.preco.toFixed(2)}</h6>
+    `;
+
+    const bebida = document.querySelector(".DetalheBebida");
+    bebida.innerHTML = `
+    <h4>${bebidaSelecionada.nome}</h4>
+    <h6>R$ ${bebidaSelecionada.preco.toFixed(2)}</h6>
+`;
+    const sobremesa = document.querySelector(".DetalheSobremesa");
+    sobremesa.innerHTML = `
+    <h4>${sobremesaSelecionada.nome}</h4>
+    <h6>R$ ${sobremesaSelecionada.preco.toFixed(2)}</h6>
+`;
+    const total = document.getElementById("ValorTotal");
+    total.innerHTML = `
+    R$ ${(
+        pratoSelecionado.preco +
+        bebidaSelecionada.preco +
+        sobremesaSelecionada.preco
+    ).toFixed(2)}
+    `;
 }
 
 document.querySelector(".FecharPedido").addEventListener("click", FecharPedido);
@@ -153,47 +175,6 @@ document
     .querySelector(".Cancelar")
     .addEventListener("click", InterruptorInterfaceCheckout);
 
-function RetornaArrayPrecosSelecionados() {
-    let ArrayPrecosSelecionados = [];
-    for (let i = 0; i < NumeroDeProdutosSelecionados(); i++) {
-        ArrayPrecosSelecionados.push(RetornaPrecoDeUmProduto(i));
-    }
-    return ArrayPrecosSelecionados;
-}
-
-function RetornaPrecoDeUmProduto(i) {
-    let Produtos = ProdutosSelecionados();
-    let preco = Produtos[i].querySelector(".Price");
-    return preco.innerText;
-}
-
-function RetornaArrayProdutosSelecionados() {
-    let ArrayProdutosSelecionados = [];
-    for (let i = 0; i < NumeroDeProdutosSelecionados(); i++) {
-        ArrayProdutosSelecionados.push(RetornaNomeDeUmProduto(i));
-    }
-    return ArrayProdutosSelecionados;
-}
-
-function RetornaNomeDeUmProduto(i) {
-    let Produtos = ProdutosSelecionados();
-    let nome = Produtos[i].querySelector(".ItemName");
-    return nome.innerText;
-}
-
-function ProdutosSelecionados() {
-    let SelectedArticles = Array.from(
-        document.querySelectorAll(".ItemSelecionado")
-    );
-    return SelectedArticles;
-}
-
-function FloattoStringReais(price) {
-    let Valor = price.toFixed(2).toString();
-    Valor = Valor.replace(".", ",");
-    return Valor;
-}
-
 function FinalizarPedido() {
     let nome = prompt("Qual é o seu nome?");
     let endereco = prompt("Digite o seu endereço");
@@ -208,32 +189,17 @@ function EnviaMensagem(nome, endereco) {
 }
 
 function TextoMensagem(nome, endereco) {
-    let Produtos = RetornaArrayProdutosSelecionados();
-    let ValorTotal = CalculaValorTotal();
-    ValorTotal = ValorTotal.toFixed(2);
     let Mensagem = `Olá, gostaria de fazer o pedido:
-    -Prato: ${Produtos[0]} 
-    -Bebida: ${Produtos[1]} 
-    -Sobremesa: ${Produtos[2]}
-    Total: R$ ${ValorTotal}
+    -Prato: ${pratoSelecionado.nome} 
+    -Bebida: ${bebidaSelecionada.nome} 
+    -Sobremesa: ${sobremesaSelecionada.nome}
+    Total: R$ ${(
+        pratoSelecionado.preco +
+        bebidaSelecionada.preco +
+        sobremesaSelecionada.preco
+    ).toFixed(2)}
     Nome: ${nome}
     Endereço: ${endereco}`;
     Mensagem = encodeURIComponent(Mensagem);
     return Mensagem;
-}
-
-function CalculaValorTotal() {
-    let VetorPrecos = RetornaArrayPrecosSelecionados();
-    let ArrayPrecosNumber = [];
-    let total = 0;
-    for (let i = 0; i < NumeroDeProdutosSelecionados(); i++) {
-        total = total + StringReaistoFloat(VetorPrecos[i]);
-    }
-    return total;
-}
-
-function StringReaistoFloat(price) {
-    let PriceString = price.substr(3);
-    PriceString = PriceString.replace(",", ".");
-    return Number(PriceString);
 }
