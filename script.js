@@ -81,6 +81,28 @@ sobremesas.forEach((sobremesa) => {
     renderizarItem(sobremesa, sobremesaContainer);
 });
 
+function renderizarItem(item, container) {
+    const article = document.createElement("article");
+    article.innerHTML = `
+                    <div>
+                        <img src="${item.imagem}" />
+                        <h4 class="ItemName">${item.nome}</h4>
+                        <h5>${item.descricao}</h5>
+                        <p class="Price">R$ ${item.preco.toFixed(2)}</p>
+                    </div>
+                    <ion-icon name="checkmark-circle"></ion-icon>
+    `;
+    container.appendChild(article);
+}
+
+const productList = document.querySelectorAll("article");
+
+for (let i = 0; i < productList.length; i++) {
+    productList[i].addEventListener("click", function () {
+        SelecionarProduto(productList[i]);
+    });
+}
+
 function SelecionarProduto(ElementoClicado) {
     let ElementoPai = ElementoClicado.parentNode;
     let ItemJaSelecionado = ElementoPai.querySelector(".ItemSelecionado");
@@ -89,25 +111,6 @@ function SelecionarProduto(ElementoClicado) {
     }
     ElementoClicado.classList.add("ItemSelecionado");
     EstadoSelecao();
-}
-
-const productList = document.querySelectorAll("article");
-for (let i = 0; i < productList.length; i++) {
-    productList[i].addEventListener("click", function () {
-        SelecionarProduto(productList[i]);
-    });
-}
-
-function ProdutosSelecionados() {
-    let SelectedArticles = Array.from(
-        document.querySelectorAll(".ItemSelecionado")
-    );
-    return SelectedArticles;
-}
-
-function NumeroDeProdutosSelecionados() {
-    let num = document.querySelectorAll(".ItemSelecionado").length;
-    return num;
 }
 
 function EstadoSelecao() {
@@ -119,37 +122,9 @@ function EstadoSelecao() {
     }
 }
 
-function InterruptorInterfaceCheckout() {
-    let TransparentBackground = document.querySelector(".BlurBackground");
-    let OrderStats = document.querySelector(".DetalhesPedidoContainer");
-    TransparentBackground.classList.toggle("Escondido");
-    OrderStats.classList.toggle("Escondido");
-}
-
-document
-    .querySelector(".Cancelar")
-    .addEventListener("click", InterruptorInterfaceCheckout);
-
-function StringReaistoFloat(price) {
-    let PriceString = price.substr(3);
-    PriceString = PriceString.replace(",", ".");
-    return Number(PriceString);
-}
-
-function FloattoStringReais(price) {
-    let Valor = price.toFixed(2).toString();
-    Valor = Valor.replace(".", ",");
-    return Valor;
-}
-
-function CalculaValorTotal() {
-    let VetorPrecos = RetornaArrayPrecosSelecionados();
-    let ArrayPrecosNumber = [];
-    let total = 0;
-    for (let i = 0; i < NumeroDeProdutosSelecionados(); i++) {
-        total = total + StringReaistoFloat(VetorPrecos[i]);
-    }
-    return total;
+function NumeroDeProdutosSelecionados() {
+    let num = document.querySelectorAll(".ItemSelecionado").length;
+    return num;
 }
 
 function FecharPedido() {
@@ -172,10 +147,23 @@ function FecharPedido() {
 
 document.querySelector(".FecharPedido").addEventListener("click", FecharPedido);
 
-function RetornaNomeDeUmProduto(i) {
-    let Produtos = ProdutosSelecionados();
-    let nome = Produtos[i].querySelector(".ItemName");
-    return nome.innerText;
+function InterruptorInterfaceCheckout() {
+    let TransparentBackground = document.querySelector(".BlurBackground");
+    let OrderStats = document.querySelector(".DetalhesPedidoContainer");
+    TransparentBackground.classList.toggle("Escondido");
+    OrderStats.classList.toggle("Escondido");
+}
+
+document
+    .querySelector(".Cancelar")
+    .addEventListener("click", InterruptorInterfaceCheckout);
+
+function RetornaArrayPrecosSelecionados() {
+    let ArrayPrecosSelecionados = [];
+    for (let i = 0; i < NumeroDeProdutosSelecionados(); i++) {
+        ArrayPrecosSelecionados.push(RetornaPrecoDeUmProduto(i));
+    }
+    return ArrayPrecosSelecionados;
 }
 
 function RetornaPrecoDeUmProduto(i) {
@@ -192,13 +180,38 @@ function RetornaArrayProdutosSelecionados() {
     return ArrayProdutosSelecionados;
 }
 
-function RetornaArrayPrecosSelecionados() {
-    let ArrayPrecosSelecionados = [];
-    for (let i = 0; i < NumeroDeProdutosSelecionados(); i++) {
-        ArrayPrecosSelecionados.push(RetornaPrecoDeUmProduto(i));
-    }
-    return ArrayPrecosSelecionados;
+function RetornaNomeDeUmProduto(i) {
+    let Produtos = ProdutosSelecionados();
+    let nome = Produtos[i].querySelector(".ItemName");
+    return nome.innerText;
 }
+
+function ProdutosSelecionados() {
+    let SelectedArticles = Array.from(
+        document.querySelectorAll(".ItemSelecionado")
+    );
+    return SelectedArticles;
+}
+
+function FloattoStringReais(price) {
+    let Valor = price.toFixed(2).toString();
+    Valor = Valor.replace(".", ",");
+    return Valor;
+}
+
+function FinalizarPedido() {
+    let nome = prompt("Qual é o seu nome?");
+    let endereco = prompt("Digite o seu endereço");
+    EnviaMensagem(nome, endereco);
+}
+
+document.querySelector(".Confirmar").addEventListener("click", FinalizarPedido);
+
+function EnviaMensagem(nome, endereco) {
+    let Mensagem = TextoMensagem(nome, endereco);
+    window.open("https://wa.me/5535988005349?text=" + Mensagem, "_self");
+}
+
 function TextoMensagem(nome, endereco) {
     let Produtos = RetornaArrayProdutosSelecionados();
     let ValorTotal = CalculaValorTotal();
@@ -213,29 +226,19 @@ function TextoMensagem(nome, endereco) {
     Mensagem = encodeURIComponent(Mensagem);
     return Mensagem;
 }
-function EnviaMensagem(nome, endereco) {
-    let Mensagem = TextoMensagem(nome, endereco);
-    window.open("https://wa.me/5535988005349?text=" + Mensagem, "_self");
+
+function CalculaValorTotal() {
+    let VetorPrecos = RetornaArrayPrecosSelecionados();
+    let ArrayPrecosNumber = [];
+    let total = 0;
+    for (let i = 0; i < NumeroDeProdutosSelecionados(); i++) {
+        total = total + StringReaistoFloat(VetorPrecos[i]);
+    }
+    return total;
 }
 
-function FinalizarPedido() {
-    let nome = prompt("Qual é o seu nome?");
-    let endereco = prompt("Digite o seu endereço");
-    EnviaMensagem(nome, endereco);
-}
-
-document.querySelector(".Confirmar").addEventListener("click", FinalizarPedido);
-
-function renderizarItem(item, container) {
-    const article = document.createElement("article");
-    article.innerHTML = `
-                    <div>
-                        <img src="${item.imagem}" />
-                        <h4 class="ItemName">${item.nome}</h4>
-                        <h5>${item.descricao}</h5>
-                        <p class="Price">R$ ${item.preco.toFixed(2)}</p>
-                    </div>
-                    <ion-icon name="checkmark-circle"></ion-icon>
-    `;
-    container.appendChild(article);
+function StringReaistoFloat(price) {
+    let PriceString = price.substr(3);
+    PriceString = PriceString.replace(",", ".");
+    return Number(PriceString);
 }
