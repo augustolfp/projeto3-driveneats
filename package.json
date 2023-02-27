@@ -7,6 +7,9 @@
   "scripts": {
     "dev": "parcel index.html"
   },
+  "staticFiles": {
+    "staticPath": "images"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/augustolfp/projeto3-driveneats.git"
@@ -19,6 +22,7 @@
   },
   "homepage": "https://github.com/augustolfp/projeto3-driveneats#readme",
   "devDependencies": {
-    "parcel": "^2.8.3"
+    "parcel": "^2.8.3",
+    "parcel-reporter-static-files-copy": "^1.5.0"
   }
 }
