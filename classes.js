@@ -1,9 +1,23 @@
 export class Session {
     constructor(dishes, beverages, desserts) {
-        this.dishes = this.buildDishes(dishes);
-        this.beverages = this.buildBeverages(beverages);
-        this.desserts = this.buildDesserts(desserts);
+        this.dishes = this.buildMenu(dishes, "dish");
+        this.beverages = this.buildMenu(beverages, "beverage");
+        this.desserts = this.buildMenu(desserts, "dessert");
         this.order = new Order();
+    }
+
+    buildMenu(items, type) {
+        let container = null;
+        if (type === "dish") container = document.querySelector(".Pratos");
+        if (type === "beverage") container = document.querySelector(".Bebidas");
+        if (type === "dessert") {
+            container = document.querySelector(".Sobremesa");
+        }
+
+        return items.map(({ name, image, description, price }) => {
+            const dish = new Item(name, image, description, price, type);
+            dish.render(container);
+        });
     }
 }
 
@@ -41,30 +55,30 @@ export class Order {
     }
 }
 
-export class Dish {
-    constructor(name, image, description, price) {
+export class Item {
+    constructor(name, image, description, price, type) {
         this.name = name;
         this.image = image;
         this.description = description;
         this.price = price;
+        this.element = null;
+        this.type = type;
     }
-}
 
-export class Beverage {
-    constructor(name, image, description, price) {
-        this.name = name;
-        this.image = image;
-        this.description = description;
-        this.price = price;
-    }
-}
+    render(container) {
+        const article = document.createElement("article");
+        article.innerHTML = `
+        <div>
+            <img src="${this.image}" />
+            <h4 class="ItemName">${this.name}</h4>
+            <h5>${this.description}</h5>
+            <p class="Price">R$ ${this.price.toFixed(2)}</p>
+        </div>
+        <ion-icon name="checkmark-circle"></ion-icon>
+`;
 
-export class Dessert {
-    constructor(name, image, description, price) {
-        this.name = name;
-        this.image = image;
-        this.description = description;
-        this.price = price;
+        container.appendChild(article);
+        this.element = article;
     }
 }
 

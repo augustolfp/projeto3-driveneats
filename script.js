@@ -1,47 +1,11 @@
-import {
-    dishes as pratos,
-    beverages as bebidas,
-    desserts as sobremesas,
-} from "./data.js";
+import { dishes, beverages, desserts } from "./data.js";
+import { Session } from "./classes";
+
+new Session(dishes, beverages, desserts);
 
 let pratoSelecionado = null;
 let bebidaSelecionada = null;
 let sobremesaSelecionada = null;
-
-const pratosContainer = document.querySelector(".Pratos");
-const bebidasContainer = document.querySelector(".Bebidas");
-const sobremesaContainer = document.querySelector(".Sobremesa");
-
-pratos.forEach((prato) => {
-    renderizarItem(prato, pratosContainer, "prato");
-});
-
-bebidas.forEach((bebida) => {
-    renderizarItem(bebida, bebidasContainer, "bebida");
-});
-
-sobremesas.forEach((sobremesa) => {
-    renderizarItem(sobremesa, sobremesaContainer, "sobremesa");
-});
-
-function renderizarItem(item, container, tipo) {
-    const article = document.createElement("article");
-    article.innerHTML = `
-                    <div>
-                        <img src="${item.imagem}" />
-                        <h4 class="ItemName">${item.nome}</h4>
-                        <h5>${item.descricao}</h5>
-                        <p class="Price">R$ ${item.preco.toFixed(2)}</p>
-                    </div>
-                    <ion-icon name="checkmark-circle"></ion-icon>
-    `;
-
-    container.appendChild(article);
-
-    article.addEventListener("click", function () {
-        SelecionarProduto(article, tipo, item.nome, item.preco);
-    });
-}
 
 function SelecionarProduto(ElementoClicado, tipo, nome, preco) {
     let ElementoPai = ElementoClicado.parentNode;
