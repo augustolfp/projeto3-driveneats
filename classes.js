@@ -76,9 +76,11 @@ export class Item {
         </div>
         <ion-icon name="checkmark-circle"></ion-icon>
 `;
-
-        container.appendChild(article);
         this.element = article;
+        container.appendChild(article);
+        this.element.addEventListener("click", function () {
+            article.classList.add("ItemSelecionado");
+        });
     }
 }
 
