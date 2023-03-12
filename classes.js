@@ -39,6 +39,12 @@ export class Session {
     enableOrderButton() {
         this.orderButton.disabled = false;
         this.orderButton.innerHTML = "Fazer pedido";
+        this.orderButton.addEventListener("click", () => this.checkout());
+    }
+
+    checkout() {
+        const modal = new Modal();
+        modal.render();
     }
 }
 
@@ -120,5 +126,35 @@ export class User {
     constructor() {
         this.name = null;
         this.address = null;
+    }
+}
+
+export class Modal {
+    constructor() {
+        this.element = null;
+        this.backgroundBlur = document.querySelector(".BlurBackground");
+        this.container = document.querySelector(".DetalhesPedidoContainer");
+    }
+
+    render() {
+        const checkoutModal = document.createElement("div");
+        checkoutModal.setAttribute("id", "DetalhesPedido");
+        checkoutModal.innerHTML = `
+            <h2>Confirme seu pedido</h2>
+            <div class="DetalhePrato"></div>
+            <div class="DetalheBebida"></div>
+            <div class="DetalheSobremesa"></div>
+            <div>
+                <p>TOTAL</p>
+                <p id="ValorTotal"></p>
+            </div>
+            <button class="Confirmar">Tudo certo, pode pedir!</button>
+            <button class="Cancelar">Cancelar</button>
+        `;
+
+        this.container.appendChild(checkoutModal);
+
+        this.backgroundBlur.classList.remove("Escondido");
+        this.container.classList.remove("Escondido");
     }
 }
