@@ -4,6 +4,7 @@ export class Session {
         this.beverages = this.buildMenu(beverages, "beverage");
         this.desserts = this.buildMenu(desserts, "dessert");
         this.order = new Order();
+        this.orderButton = document.querySelector(".BottomBar > button");
     }
 
     buildMenu(items, type) {
@@ -18,6 +19,12 @@ export class Session {
             const dish = new Item(name, image, description, price, type);
             dish.render(container);
         });
+    }
+
+    enableOrderButton() {
+        console.log(this.orderButton);
+        this.orderButton.disabled = false;
+        this.orderButton.innerHTML = "Fazer pedido";
     }
 }
 
@@ -78,9 +85,17 @@ export class Item {
 `;
         this.element = article;
         container.appendChild(article);
-        this.element.addEventListener("click", function () {
-            article.classList.add("ItemSelecionado");
-        });
+        this.element.addEventListener("click", () => this.selectItem());
+    }
+
+    selectItem() {
+        const parentElement = this.element.parentNode;
+        const alreadySelectedItem =
+            parentElement.querySelector(".ItemSelecionado");
+        if (alreadySelectedItem) {
+            alreadySelectedItem.classList.remove("ItemSelecionado");
+        }
+        this.element.classList.add("ItemSelecionado");
     }
 }
 
