@@ -17,12 +17,26 @@ export class Session {
 
         return items.map(({ name, image, description, price }) => {
             const dish = new Item(name, image, description, price, type);
-            dish.render(container);
+            dish.render(container, this.updateOrderStatus.bind(this));
         });
     }
 
+    updateOrderStatus(type, name, price) {
+        if (type === "dish") {
+            this.order.dish = { name, price };
+        }
+        if (type === "beverage") {
+            this.order.beverage = { name, price };
+        }
+        if (type === "dessert") {
+            this.order.dessert = { name, price };
+        }
+        if (this.order.isValid()) {
+            this.enableOrderButton();
+        }
+    }
+
     enableOrderButton() {
-        console.log(this.orderButton);
         this.orderButton.disabled = false;
         this.orderButton.innerHTML = "Fazer pedido";
     }
@@ -72,7 +86,7 @@ export class Item {
         this.type = type;
     }
 
-    render(container) {
+    render(container, callback) {
         const article = document.createElement("article");
         article.innerHTML = `
         <div>
@@ -85,7 +99,10 @@ export class Item {
 `;
         this.element = article;
         container.appendChild(article);
-        this.element.addEventListener("click", () => this.selectItem());
+        this.element.addEventListener("click", () => {
+            this.selectItem();
+            callback(this.type, this.name, this.price);
+        });
     }
 
     selectItem() {
