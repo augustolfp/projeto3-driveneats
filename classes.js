@@ -44,7 +44,12 @@ export class Session {
 
     checkout() {
         const modal = new Modal();
-        modal.render();
+        modal.render(
+            this.order.dish,
+            this.order.beverage,
+            this.order.dessert,
+            this.order.getTotalPrice()
+        );
     }
 }
 
@@ -136,17 +141,26 @@ export class Modal {
         this.container = document.querySelector(".DetalhesPedidoContainer");
     }
 
-    render() {
+    render(dish, beverage, dessert, totalPrice) {
         const checkoutModal = document.createElement("div");
         checkoutModal.setAttribute("id", "DetalhesPedido");
         checkoutModal.innerHTML = `
             <h2>Confirme seu pedido</h2>
-            <div class="DetalhePrato"></div>
-            <div class="DetalheBebida"></div>
-            <div class="DetalheSobremesa"></div>
+            <div class="DetalhePrato">
+                <h4>${dish.name}</h4>
+                <h6>R$ ${dish.price.toFixed(2)}</h6>
+            </div>
+            <div class="DetalheBebida">
+                <h4>${beverage.name}</h4>
+                <h6>R$ ${beverage.price.toFixed(2)}</h6>
+            </div>
+            <div class="DetalheSobremesa">
+                <h4>${dessert.name}</h4>
+                <h6>R$ ${dessert.price.toFixed(2)}</h6>
+            </div>
             <div>
                 <p>TOTAL</p>
-                <p id="ValorTotal"></p>
+                <p id="ValorTotal">R$ ${totalPrice.toFixed(2)}</p>
             </div>
             <button class="Confirmar">Tudo certo, pode pedir!</button>
             <button class="Cancelar">Cancelar</button>
