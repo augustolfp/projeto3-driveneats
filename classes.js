@@ -31,7 +31,7 @@ export class Session {
         if (type === "dessert") {
             this.order.dessert = { name, price };
         }
-        if (this.order.isValid()) {
+        if (this.order.isValid() && this.orderButton.disabled) {
             this.enableOrderButton();
         }
     }
