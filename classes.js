@@ -166,9 +166,19 @@ export class Modal {
             <button class="Cancelar">Cancelar</button>
         `;
 
+        this.element = checkoutModal;
         this.container.appendChild(checkoutModal);
-
+        this.setupButtons();
         this.backgroundBlur.classList.remove("Escondido");
         this.container.classList.remove("Escondido");
+    }
+
+    setupButtons() {
+        const cancelButton = document.querySelector(".Cancelar");
+        cancelButton.addEventListener("click", () => {
+            this.element.remove();
+            this.backgroundBlur.classList.add("Escondido");
+            this.container.classList.add("Escondido");
+        });
     }
 }
