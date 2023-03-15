@@ -5,6 +5,7 @@ export class Session {
         this.desserts = this.buildMenu(desserts, "dessert");
         this.order = new Order();
         this.orderButton = document.querySelector(".BottomBar > button");
+        this.modal = new Modal();
     }
 
     buildMenu(items, type) {
@@ -43,12 +44,12 @@ export class Session {
     }
 
     checkout() {
-        const modal = new Modal();
-        modal.render(
+        this.modal.render(
             this.order.dish,
             this.order.beverage,
             this.order.dessert,
-            this.order.getTotalPrice()
+            this.order.getTotalPrice(),
+            () => this.order.sendWhatsApp()
         );
     }
 }
@@ -58,7 +59,7 @@ export class Order {
         this.dish = null;
         this.beverage = null;
         this.dessert = null;
-        this.user = null;
+        this.user = new User();
     }
 
     isValid() {
@@ -70,6 +71,7 @@ export class Order {
     }
 
     sendWhatsApp() {
+        this.user.setUser();
         const message = `
         Olá, gostaria de fazer o pedido:
         -Prato: ${this.dish.name} 
@@ -132,6 +134,11 @@ export class User {
         this.name = null;
         this.address = null;
     }
+
+    setUser() {
+        this.name = prompt("Digite seu nome");
+        this.address = prompt("Digite seu endereço");
+    }
 }
 
 export class Modal {
@@ -141,7 +148,7 @@ export class Modal {
         this.container = document.querySelector(".DetalhesPedidoContainer");
     }
 
-    render(dish, beverage, dessert, totalPrice) {
+    render(dish, beverage, dessert, totalPrice, confirmCallback) {
         const checkoutModal = document.createElement("div");
         checkoutModal.setAttribute("id", "DetalhesPedido");
         checkoutModal.innerHTML = `
@@ -168,17 +175,20 @@ export class Modal {
 
         this.element = checkoutModal;
         this.container.appendChild(checkoutModal);
-        this.setupButtons();
+        this.setupButtons(confirmCallback);
         this.backgroundBlur.classList.remove("Escondido");
         this.container.classList.remove("Escondido");
     }
 
-    setupButtons() {
+    setupButtons(confirmCallback) {
         const cancelButton = document.querySelector(".Cancelar");
         cancelButton.addEventListener("click", () => {
             this.element.remove();
             this.backgroundBlur.classList.add("Escondido");
             this.container.classList.add("Escondido");
         });
+
+        const confirmButton = document.querySelector(".Confirmar");
+        confirmButton.addEventListener("click", confirmCallback);
     }
 }
